@@ -27,6 +27,18 @@ const Resume = ({ data }) => {
         </div>
       );
     });
+    var otherEducation = data.otherEducation.map(function (otherEducation) {
+      return (
+        <div key={otherEducation.school}>
+          <h3>{otherEducation.school}</h3>
+          <p className="info">
+            {otherEducation.degree} <span>&bull;</span>
+            <em className="date">{otherEducation.graduated}</em>
+          </p>
+          <p>{otherEducation.description}</p>
+        </div>
+      );
+    });
     var skills = data.skills.map(function (skills) {
       var className = "bar-expand " + skills.name.toLowerCase();
       return (
@@ -62,6 +74,20 @@ const Resume = ({ data }) => {
         </div>
 
         <div className="nine columns main-col">{work}</div>
+      </div>
+
+      <div className="row education">
+        <div className="three columns header-col">
+          <h1>
+            <span>Other Education</span>
+          </h1>
+        </div>
+
+        <div className="nine columns main-col">
+          <div className="row item">
+            <div className="twelve columns">{otherEducation}</div>
+          </div>
+        </div>
       </div>
 
       <div className="row skill">
